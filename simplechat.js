@@ -3,11 +3,23 @@ var app = express();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
 var moment = require('moment');
+var program = require('commander');
 var oneWeek = 604800;
 var messages = [];
-var keepHistory = true;
+var keepHistory = false;
 
-server.listen(8000, function () {
+program
+    .version('0.0.1')
+    .option('-H, --history', 'Keep track of all client messages for the session and send all new clients a complete history of messages.')
+    .option('-p, --port <port>', 'Specify a port to listen on (Default: 8000).', parseInt)
+    .parse(process.argv)
+    .outputHelp();
+
+if(program.history) {
+    keepHistory = true;
+}
+
+server.listen(program.port || 8000, function () {
     var host = server.address().address;
     var port = server.address().port;
 
