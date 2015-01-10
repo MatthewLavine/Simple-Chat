@@ -1,0 +1,21 @@
+{
+  "name": "Simple-Chat",
+  "version": "0.0.1",
+  "description": "Simple Node.js based webchat",
+  "private": true,
+  "main": "simplechat.js",
+  "author": "Matthew Lavine <hermitlavine@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "grunt-contrib-concat": "~0.5.0",
+    "grunt-contrib-uglify": "~0.7.0",
+    "grunt-contrib-cssmin": "~0.11.0",
+    "grunt-contrib-clean": "~0.6.0",
+    "grunt-contrib-htmlmin": "~0.3.0"
+  },
+  "dependencies": {
+    "express": "~4.10.7",
+    "socket.io": "~1.2.1"
+  }
+}

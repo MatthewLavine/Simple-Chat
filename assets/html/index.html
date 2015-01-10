@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Simple-Chat">
+<head ng-controller="HeaderController">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="css/simplechat.min.css">
+    <script src="js/simplechat.min.js"></script>
+</head>
+<body ng-controller="BodyController">
+<div class="container">
+    <div class="chat-window animated fadeIn">
+        <header>
+            <section class="menu">
+                <div class="title">{{title}}</div>
+                <div class="settings-button-container">
+                    <div class="settings-button" ng-click="toggleSettings()">&#9776;</div>
+                </div>
+            </section>
+            <section class="popup-settings animated no-dismiss">
+                <ul>
+                    <li class="no-dismiss" ng-click="changeName();toggleSettings();">Change Name</li>
+                    <li class="no-dismiss" ng-click="toggleAbout();toggleSettings();">About</li>
+                </ul>
+            </section>
+        </header>
+        <section class="log-container">
+            <div class="log">
+                <div class="card animated fadeIn" ng-repeat="message in messages">
+                    <div class="sender">Message from {{message.sender}} received at {{message.time}}</div>
+                    <div class="content">{{message.content}}</div>
+                </div>
+            </div>
+        </section>
+        <section class="input">
+            <input autofocus autocomplete="off" type="text" class="chatBox" placeholder="Type a message..."
+                   maxlength="500"
+                   ng-keyup="$event.keyCode == 13 ? doChat() : null">
+        </section>
+        <section class="about modal-container animated">
+            <div class="modal no-dismiss">
+                <h4 class="no-dismiss">About</h4>
+
+                <p class="no-dismiss">Simple Chat</p>
+
+                <p class="no-dismiss">Simple Node.js based Chat App</p>
+            </div>
+        </section>
+    </div>
+</div>
+</body>
+</html>
