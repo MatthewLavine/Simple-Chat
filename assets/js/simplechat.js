@@ -23,21 +23,20 @@ app.controller('BodyController', ['$scope', '$rootElement', 'socket', function (
     });
     socket.on('message', function (message) {
         $scope.messages.push({
-            'sender': message.from,
-            'time': moment().format('h:mm:ss A'),
-            'content': message.content
+            sender: message.from,
+            time: message.time,
+            content: message.content
         });
-        setTimeout(function () {
-            $('.log').scrollTop($('.log')[0].scrollHeight);
-        }, 100);
+
+        $('.log').stop(true, false).animate({scrollTop: $('.log')[0].scrollHeight}, 1000);
     });
 
     $scope.doChat = function () {
         if ($('.chatBox').val() != "") {
             var tmp = $('.chatBox').val();
-            if(tmp.indexOf('/nick') != -1) {
+            if (tmp.indexOf('/name') != -1) {
                 var newName = tmp.split(' ')[1];
-                if(newName) {
+                if (newName) {
                     $scope.name = newName;
                     socket.emit('username', $scope.name);
                 } else {
@@ -46,6 +45,7 @@ app.controller('BodyController', ['$scope', '$rootElement', 'socket', function (
             } else {
                 socket.emit('message', {
                     from: $scope.name,
+                    time: moment().format('h:mm:ss A'),
                     content: $('.chatBox').val()
                 });
             }
@@ -66,7 +66,7 @@ app.controller('BodyController', ['$scope', '$rootElement', 'socket', function (
     };
 
     $scope.changeName = function () {
-        $('.chatBox').val('/nick ').focus();
+        $('.chatBox').val('/name ').focus();
     };
 
     $scope.toggleAbout = function () {

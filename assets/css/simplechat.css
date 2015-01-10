@@ -218,6 +218,7 @@ body {
     position: absolute;
     margin-right: -30px;
     padding-right: 30px;
+    padding-bottom: 0;
     top: 2.3125rem;
     right: 0;
     bottom: 2.3125rem;
@@ -241,10 +242,10 @@ body {
     margin-bottom: 1rem;
     padding: 0.5rem;
     text-align: left;
-    -webkit-animation-delay: 0;
-    animation-delay: 0;
-    -webkit-animation-duration: 0.2s;
-    animation-duration: 0.2s;
+    -webkit-animation-delay: 0.1s;
+    animation-delay: 0.1s;
+    -webkit-animation-duration: 0.5s;
+    animation-duration: 0.5s;
 }
 
 .sender {
