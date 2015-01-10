@@ -5,6 +5,11 @@ body {
     font-family: 'Ubuntu', sans-serif;
 }
 
+a:link, a:visited, a:hover, a:active {
+    text-decoration: none;
+    color: inherit;
+}
+
 .container {
     position: absolute;
     top:2rem;

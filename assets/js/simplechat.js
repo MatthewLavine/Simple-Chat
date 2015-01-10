@@ -75,7 +75,7 @@ app.controller('BodyController', ['$scope', '$rootElement', 'socket', function (
             $('.about').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
                 $(document).bind("click touchstart", function (e) {
                     e.stopPropagation();
-                    e.preventDefault();
+                    //e.preventDefault();
                     if (e.target.className.indexOf("no-dismiss") == -1) {
                         $scope.toggleAbout();
                     }
