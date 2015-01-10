@@ -74,6 +74,8 @@ app.controller('BodyController', ['$scope', '$rootElement', 'socket', function (
             $('.about').stop(true, true).css('display', 'inline-block').removeClass("zoomOut").addClass("zoomIn");
             $('.about').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
                 $(document).bind("click touchstart", function (e) {
+                    e.stopPropagation();
+                    e.preventDefault();
                     if (e.target.className.indexOf("no-dismiss") == -1) {
                         $scope.toggleAbout();
                     }
