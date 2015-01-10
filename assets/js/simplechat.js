@@ -73,7 +73,7 @@ app.controller('BodyController', ['$scope', '$rootElement', 'socket', function (
         if ($('.about').css('display') == 'none') {
             $('.about').stop(true, true).css('display', 'inline-block').removeClass("zoomOut").addClass("zoomIn");
             $('.about').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
-                $(document).bind("click", function (e) {
+                $(document).bind("click touchstart", function (e) {
                     if (e.target.className.indexOf("no-dismiss") == -1) {
                         $scope.toggleAbout();
                     }
@@ -83,7 +83,7 @@ app.controller('BodyController', ['$scope', '$rootElement', 'socket', function (
             $('.about').stop(true, true).removeClass("zoomIn").addClass("zoomOut");
             $('.about').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
                 $('.about').css('display', 'none');
-                $(document).unbind("click");
+                $(document).unbind("click touchstart ");
                 $('.chatBox').focus();
             });
         }
