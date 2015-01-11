@@ -3,6 +3,7 @@ var app = express();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
 var moment = require('moment');
+var compress = require('compression');
 var program = require('commander');
 var oneWeek = 604800;
 var messages = [];
@@ -26,6 +27,7 @@ server.listen(program.port || 8000, function () {
     console.log('Simple-Chat running at http://%s:%s', host, port);
 });
 
+app.use(compress());
 app.use(express.static(__dirname + '/public', { maxAge: oneWeek }));
 
 app.get('/', function (req, res) {
